@@ -1,6 +1,6 @@
 <?php
 
-class HomeController extends BaseController {
+class ManagerController extends BaseController {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -15,26 +15,12 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function showWelcome()
-	{
-		return View::make('hello');
-	}
 	/**
 	* Display Home page
 	*
 	* @return View Home page
 	*/
 	public function getIndex()
-    {	
-		return View::make('index');
-	}
-	
-	/**
-	* Display add manager page
-	*
-	* @return View add manager page
-	*/
-	public function getAdd()
     {	
 		return View::make('add');
 	}
