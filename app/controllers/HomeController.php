@@ -39,5 +39,11 @@ class HomeController extends BaseController {
 		return View::make('add');
 	}
 	
+	public function logout()
+    {
+        Confide::logout();
 
+        return Redirect::to('/users/login');
+    }
+	
 }

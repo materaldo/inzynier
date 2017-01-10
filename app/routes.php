@@ -10,14 +10,11 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-/*
-Route::get('/', function()
-{
-	return View::make('hello');
-});
-*/
 
-Route::controller('add', 'ManagerController');
+Route::when('/users/login', 'guest');
+Route::when('/', 'auth');
+
+Route::controller('/add', 'ManagerController');
 
 
 // Confide routes
@@ -30,6 +27,6 @@ Route::get('users/forgot_password', 'UsersController@forgotPassword');
 Route::post('users/forgot_password', 'UsersController@doForgotPassword');
 Route::get('users/reset_password/{token}', 'UsersController@resetPassword');
 Route::post('users/reset_password', 'UsersController@doResetPassword');
-Route::get('users/logout', 'UsersController@logout');
+Route::get('users/logout', 'UsersController@logout')->after('invalidate-browser-cache');
 
 Route::controller('/', 'HomeController');

@@ -33,6 +33,29 @@ App::after(function($request, $response)
 |
 */
 
+/*
+Route::filter('auth', function () {
+    // If the user is not logged in
+    if (Auth::guest()) {
+        return Redirect::to('users/login');
+    }
+});*/
+
+App::after(function ($request, $response) {
+    // Mencegah Kembali Login Setelah Logout dengan Menekan Tombol Back pada Browser
+    $response->headers->set("Cache-Control","no-cache,no-store, must-revalidate");
+    $response->headers->set("Pragma", "no-cache"); //HTTP 1.0
+    $response->headers->set("Expires"," Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
+});
+
+Route::filter('invalidate-browser-cache', function($request, $response)
+{
+    $response->headers->set('Cache-Control','nocache, no-store, max-age=0, must-revalidate'); 
+    $response->headers->set('Pragma','no-cache'); 
+    $response->headers->set('Expires','Fri, 01 Jan 1990 00:00:00 GMT');
+});
+
+
 Route::filter('auth', function()
 {
 	if (Auth::guest())
@@ -43,10 +66,11 @@ Route::filter('auth', function()
 		}
 		else
 		{
-			return Redirect::guest('login');
+			return Redirect::guest('users/login');
 		}
 	}
 });
+
 
 
 Route::filter('auth.basic', function()

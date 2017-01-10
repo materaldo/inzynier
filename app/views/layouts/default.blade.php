@@ -7,12 +7,15 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
     <meta name="description" content="">
+	 <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+  <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+  <META HTTP-EQUIV="EXPIRES" CONTENT="0">
     <meta name="author" content="">
-    <!-- <link rel="stylesheet" type="text/css" href="../css/style.css"/> -->
 	<!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href="../css/simple-sidebar.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../css/style.css"/>
     <title>Cmentarz</title>
 	<!-- <link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico">
     {{ HTML::style('css/style.css'); }} -->
@@ -28,38 +31,35 @@
 
 </head>
 
-<body>
-
+<body>	
+	
     <div id="wrapper">
-
+	
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="/index">
-                        Strona główna
+                    <a href="/">
+                        Wyszukiwarka
                     </a>
                 </li>
                 <li>
-                    <a href="#">Shortcuts</a>
-                </li>
-			   <li>
-                    <a href="/add">Dodaj zarządcę</a>
+                    <a href="/addGraves">Dodaj grób</a>
                 </li>
                 <li>
-                    <a href="#">Overview</a>
+                    <a href="/addBuried">Dodaj pochowanego</a>
                 </li>
                 <li>
-                    <a href="#">Events</a>
+                    <a href="#">Archiwum</a>
                 </li>
                 <li>
-                    <a href="#">About</a>
+                    <a href="/map">Mapa cmentarza</a>
+                </li>
+				<li>
+                    <a href="/users/create">Dodaj zarządcę</a>
                 </li>
                 <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
+                    <a href="/users/logout">Wyloguj</a>
                 </li>
             </ul>
         </div>
@@ -70,16 +70,29 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-						 <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
-                        <h1>Test</h1>
+						<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
                     
+						<?php 
+						
+						if(Auth::guest()){}
+							//echo 'true';
+						//else
+							//echo 'false';
+							
+						
+						if(Auth::user()!==null)
+						{
+							//echo Auth::user()->username;
+						}
+						?>
+					
+						@yield('content')
+					
                     </div>
                 </div>
             </div>
         </div>
         <!-- /#page-content-wrapper -->
-
-		@yield('content')
 			
     </div>
     <!-- /#wrapper -->
