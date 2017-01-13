@@ -1,6 +1,6 @@
 <?php
 
-class ManagerController extends BaseController {
+class MapController extends BaseController {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -22,7 +22,7 @@ class ManagerController extends BaseController {
 	*/
 	public function getIndex()
     {	
-		return View::make('add');
+		return View::make('map');
 	}
 	
 

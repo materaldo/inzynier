@@ -44,10 +44,10 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/addGraves">Dodaj grób</a>
+                    <a href="/graves">Dodaj grób</a>
                 </li>
                 <li>
-                    <a href="/addBuried">Dodaj pochowanego</a>
+                    <a href="/buried">Dodaj pochowanego</a>
                 </li>
                 <li>
                     <a href="#">Archiwum</a>
@@ -85,8 +85,9 @@
 							//echo Auth::user()->username;
 						}
 						?>
-					
+					<div>
 						@yield('content')
+					</div>
 					
                     </div>
                 </div>

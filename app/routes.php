@@ -14,7 +14,9 @@
 Route::when('/users/login', 'guest');
 Route::when('/', 'auth');
 
-Route::controller('/add', 'ManagerController');
+Route::controller('/map', 'MapController');
+Route::controller('/graves', 'GravesController');
+Route::controller('/buried', 'BuriedController');
 
 
 // Confide routes

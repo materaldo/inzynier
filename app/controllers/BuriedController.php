@@ -1,6 +1,6 @@
 <?php
 
-class HomeController extends BaseController {
+class BuriedController extends BaseController {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -14,11 +14,7 @@ class HomeController extends BaseController {
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
-/*
-	public function showWelcome()
-	{
-		return View::make('hello');
-	}*/
+
 	/**
 	* Display Home page
 	*
@@ -26,34 +22,8 @@ class HomeController extends BaseController {
 	*/
 	public function getIndex()
     {	
-		return View::make('index');
-	}
-	
-	/**
-	* Display add manager page
-	*
-	* @return View add manager page
-	*/
-	public function getAddGraves()
-    {	
-		return View::make('graves.graves');
-	}
-	
-	public function getAddBuried()
-    {	
 		return View::make('buried.buried');
 	}
 	
-	public function getMap()
-	{
-		return View::make('map');
-	}
-	
-	public function logout()
-    {
-        Confide::logout();
 
-        return Redirect::to('/users/login');
-    }
-	
 }
