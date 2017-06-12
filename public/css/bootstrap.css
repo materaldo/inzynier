@@ -27,6 +27,8 @@ section,
 summary {
   display: block;
 }
+.info{color: green;}
+
 audio,
 canvas,
 progress,

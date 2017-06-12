@@ -19,6 +19,11 @@ class CreatePlacesTable extends Migration {
 			$table->string('sector');
 			$table->integer('row');
 			$table->integer('number');
+			$table->integer('x');
+			$table->integer('y');
+			$table->integer('width');
+			$table->integer('length');
+			$table->boolean('status');
 			$table->integer('id_cem')->unsigned();
 			$table->foreign('id_cem')->references('id')->on('cemeteries');
 			$table->timestamps();

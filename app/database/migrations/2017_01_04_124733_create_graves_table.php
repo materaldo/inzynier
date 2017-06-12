@@ -15,12 +15,13 @@ class CreateGravesTable extends Migration {
 		//
 		Schema::create('graves', function($table)
 		{
-			$table->integer('id')->unsigned();
-			$table->foreign('id')->references('id')->on('places');
-			$table->primary('id');
+			$table->increments('id');
+			$table->integer('id_place')->unsigned();
+			$table->foreign('id_place')->references('id')->on('places');
 			$table->date('payment_date')->nullable();
-			$table->float('length')->nullable();
 			$table->float('width')->nullable();
+			$table->float('length')->nullable();
+			$table->string('image')->nullable();
 			$table->integer('id_type')->unsigned();
 			$table->foreign('id_type')->references('id')->on('typesOfGraves');
 			$table->integer('id_dis')->unsigned()->nullable();

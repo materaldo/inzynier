@@ -17,6 +17,7 @@ class CreateTypesOfGravesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('type');
+			$table->string('count')->nullable();
 			$table->timestamps();
 		});
 	}

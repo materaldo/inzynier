@@ -11,12 +11,32 @@
 |
 */
 
-Route::when('/users/login', 'guest');
-Route::when('/', 'auth');
+Route::group(['before' => 'auth'], function()
+{
+    Route::controller('/graves', 'GravesController');
+    Route::controller('/places', 'PlacesController');
+    Route::controller('/buried', 'BuriedController');
+    Route::controller('/dispatchers', 'DispatchersController');
+    Route::controller('/search', 'SearchController');
+    Route::get('/data', 'HomeController@getData');
+	Route::get('/map', 'HomeController@getMap');
+    Route::get('/import', 'HomeController@getImport');
 
-Route::controller('/map', 'MapController');
-Route::controller('/graves', 'GravesController');
-Route::controller('/buried', 'BuriedController');
+    Route::get('downloadBuried/{type}', 'BuriedController@downloadExcel');
+    Route::get('downloadPlaces/{type}', 'PlacesController@downloadExcel');
+    Route::get('downloadGraves/{type}', 'GravesController@downloadExcel');
+    Route::get('downloadDispatchers/{type}', 'DispatchersController@downloadExcel');
+
+    Route::post('importPlaces', 'HomeController@importPlaces');
+    Route::post('importDispatchers', 'HomeController@importDispatchers');
+    Route::post('importGraves', 'HomeController@importGraves');
+    Route::post('importBuried', 'HomeController@importBuried');
+
+});
+
+//Route::when('/*', 'auth');
+//Route::when('/users/login', 'guest');
+
 
 
 // Confide routes
@@ -30,5 +50,8 @@ Route::post('users/forgot_password', 'UsersController@doForgotPassword');
 Route::get('users/reset_password/{token}', 'UsersController@resetPassword');
 Route::post('users/reset_password', 'UsersController@doResetPassword');
 Route::get('users/logout', 'UsersController@logout')->after('invalidate-browser-cache');
+
+
+
 
 Route::controller('/', 'HomeController');

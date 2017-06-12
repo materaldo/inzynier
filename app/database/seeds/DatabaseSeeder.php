@@ -19,6 +19,18 @@ class DatabaseSeeder extends Seeder {
 		$this->call('PlacesTableSeeder');
 		
 		$this->command->info('Places table seeded!');
+		
+		$this->call('GravesSeeder');
+		
+		$this->command->info('Graves seeded!');
+		
+		$this->call('BuriedSeeder');
+		
+		$this->command->info('Buried seeded!');
+		
+		$this->call('UserSeeder');
+		
+		$this->command->info('User seeded!');
 	}
 
 }

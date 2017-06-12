@@ -16,8 +16,8 @@ class CreateBuriedTable extends Migration {
 		Schema::create('buried', function($table)
 		{
 			$table->increments('id');
-			$table->integer('id_grev')->unsigned();
-			$table->foreign('id_grev')->references('id')->on('graves');
+			$table->integer('id_grav')->unsigned();
+			$table->foreign('id_grav')->references('id')->on('graves');
 			$table->string('first_name');
 			$table->string('last_name');			
 			$table->string('family_name')->nullable();			
@@ -29,7 +29,8 @@ class CreateBuriedTable extends Migration {
 			$table->string('building')->nullable();
 			$table->string('post_code')->nullable();
 			$table->string('city')->nullable();
-			$table->string('note')->nullable();	
+			$table->string('note')->nullable();
+			$table->string('image')->nullable();
 			$table->timestamps();
 		});
 	}

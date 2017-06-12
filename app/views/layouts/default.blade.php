@@ -7,15 +7,15 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
     <meta name="description" content="">
-	 <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
-  <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
-  <META HTTP-EQUIV="EXPIRES" CONTENT="0">
+	<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+	<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+	<META HTTP-EQUIV="EXPIRES" CONTENT="0">
     <meta name="author" content="">
-	<!-- Bootstrap Core CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="../css/simple-sidebar.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="../css/style.css"/>
+	
+	{{ HTML::style('css/style2.css', array('type' => 'text/css')) }}
+	{{ HTML::style('css/bootstrap.min.css') }}
+	{{ HTML::style('css/simple-sidebar.css') }}
+	
     <title>Cmentarz</title>
 	<!-- <link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico">
     {{ HTML::style('css/style.css'); }} -->
@@ -50,7 +50,13 @@
                     <a href="/buried">Dodaj pochowanego</a>
                 </li>
                 <li>
-                    <a href="#">Archiwum</a>
+                    <a href="/dispatchers">Dodaj dysponenta</a>
+                </li>
+				<li>
+                    <a href="/places">Stwórz miejsce</a>
+                </li>
+				<li>
+                    <a href="/data">Wszystkie dane</a>
                 </li>
                 <li>
                     <a href="/map">Mapa cmentarza</a>
@@ -62,34 +68,28 @@
                     <a href="/users/logout">Wyloguj</a>
                 </li>
             </ul>
+			
+			<?php 
+				$cem = DB::table('cemeteries')->where('id', 1)->first();
+			?>
+			<div style="position:fixed; bottom:0; left:0; color: white;">
+			
+			{{$cem->name}} <br>
+			{{$cem->post_code}} {{$cem->city}} <br>
+			{{$cem->street}} {{$cem->building}}
+			
+			</div>
+			
         </div>
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-						<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
-                    
-						<?php 
-						
-						if(Auth::guest()){}
-							//echo 'true';
-						//else
-							//echo 'false';
-							
-						
-						if(Auth::user()!==null)
-						{
-							//echo Auth::user()->username;
-						}
-						?>
+                <div class="row"> 
 					<div>
 						@yield('content')
 					</div>
-					
-                    </div>
                 </div>
             </div>
         </div>
@@ -103,14 +103,6 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
-    <!-- Menu Toggle Script -->
-    <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    </script>
 
 </body>
 

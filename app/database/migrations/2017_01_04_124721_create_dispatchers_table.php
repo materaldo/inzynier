@@ -17,7 +17,7 @@ class CreateDispatchersTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('first_name');
-			$table->string('second_name');
+			$table->string('last_name');
 			$table->integer('phone_number');
 			$table->string('street')->nullable();
 			$table->string('building')->nullable();
@@ -35,6 +35,7 @@ class CreateDispatchersTable extends Migration {
 	public function down()
 	{
 		//
+		Schema::drop('dispatchers');
 	}
 
 }
